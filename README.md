@@ -15,8 +15,9 @@ In future there could be more algorithms implemented just for fun with some clar
 ```sh
 python3 app.py
 ```
-#
-#
+ 
+ 
+ 
 ## Description
 ### Data structure
 
@@ -33,14 +34,20 @@ NT 5.1; rv:24.0) Gecko/20100101 Firefox/24.0'),
 ```
 #
 ***input0*** field is list of items like that one: 
-*(d/u)_keycode_time[_caret]*
-#
-**d/u** - *pressed/released action*
-**keycode** - *js keycode*
-**time** - *time elapsed from first pressed button (in ms)*
-**caret** - *caret position*
-
-#
+ 
+```
+(d/u)_keycode_time[_caret]
+```
+ 
+**d/u** - *pressed/released action* 
+ 
+**keycode** - *js keycode* 
+ 
+**time** - *time elapsed from first pressed button (in ms)* 
+ 
+**caret** - *caret position* 
+ 
+ 
 ### Data preprocessing
 
 To extract only valuable numeric info about keyboard typing pattern, we process data to be list of items ***flight time*** (time button being pressed) and ***dwell time*** (time between pressing button) like this:
@@ -52,16 +59,17 @@ This trick makes two lists easy to compare using some metric for example ***Eucl
 After that we can just use kNN algorithm which is widely described.
 
 ### Results
-Using kNN algorithm with ***k=5***, effects:
-| Test nr        | Accuracy           |
-| ------------- |:-------------:|
-| 1      | 0.867950 |
-| 2      | 0.872765      |
-| 3 | 0.842503      |
-| 4 | 0.864512      | 
-| 5 | 0.861761      | 
-| 6 | 0.871389      |
-| 7 | 0.867950      |
-| 8 | 0.863824      |
+Using kNN algorithm with ***k=5***, effects below:
+
+Test nr     | Accuracy
+------------- | ------------
+1 | 0.867950
+2 | 0.872765
+3 | 0.842503
+4 | 0.864512
+5 | 0.861761
+6 | 0.871389
+7 | 0.867950
+8 | 0.863824
 
 For further extending algorithms there is multiple things which can be done to gain more accuracy, for example using ***IP address***, ***user-agent*** or ***time*** when website was visited.
