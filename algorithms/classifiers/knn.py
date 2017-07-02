@@ -1,4 +1,5 @@
 import operator
+from datetime import timedelta
 
 
 class kNNClassifier:
@@ -8,11 +9,19 @@ class kNNClassifier:
     def get_k_neighbours(self, test_instance, training_set, k):
         distances = list()
         for x in range(len(training_set)):
+            train_instance = training_set[x]
             dist = self.distanceCls.measure(
                 self.distanceCls,
                 test_instance.input0_time,
-                training_set[x].input0_time
+                train_instance.input0_time
             )
+            if test_instance.ip != train_instance.ip:
+                dist += 1000
+            if test_instance.browser != train_instance.browser:
+                dist += 600
+            if test_instance.time - train_instance.time > timedelta(hours=1):
+                dist += 200
+
             distances.append((training_set[x], dist))
         distances.sort(key=operator.itemgetter(1))
         neighbors = list()

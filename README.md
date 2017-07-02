@@ -55,7 +55,7 @@ To extract only valuable numeric info about keyboard typing pattern, we process 
 [60, 135, 60, 70, 39, 46, 79, 274, 80, 235, 59, 44, 81]
 ```
 
-This trick makes two lists easy to compare using some metric for example ***Euclidean*** one.
+This trick makes two lists easy to compare using some metric for example ***Manhattan*** one.
 After that we can just use kNN algorithm which is widely described.
 
 ### Results
@@ -73,3 +73,20 @@ Test nr     | Accuracy
 8 | 0.863824
 
 For further extending algorithms there is multiple things which can be done to gain more accuracy, for example using ***IP address***, ***user-agent*** or ***time*** when website was visited.
+
+
+### Results #2
+Exteding distance using above parameters with some wages give quite nice accuracy improvement:
+
+Test nr     | Accuracy
+------------- | ------------
+1 | 0.936726
+2 | 0.928473
+3 | 0.940853
+4 | 0.936726
+5 | 0.927098
+6 | 0.933975
+7 | 0.931912
+8 | 0.936039
+
+It is possible to better adjust wages for parameters and gain more accuracy
