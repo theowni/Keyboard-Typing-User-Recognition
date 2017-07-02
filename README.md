@@ -21,7 +21,7 @@ python3 app.py
 ## Description
 ### Data structure
 
-Data was gathered via web page. Every analyzed record in database has that scheme:
+Data was gathered via web page. There is about **~29200** records. Every analyzed record in database has that scheme:
 ```sql
 INSERT INTO `user_typing_data` (`time`, `user_id`, `input0`, `IP`, `browser`) 
 VALUES
@@ -58,7 +58,7 @@ To extract only valuable numeric info about keyboard typing pattern, we process 
 This trick makes two lists easy to compare using some metric for example ***Manhattan*** one.
 After that we can just use kNN algorithm which is widely described.
 
-### Results
+### Results #1
 Using kNN algorithm with ***k=5***, effects below:
 
 Test nr     | Accuracy
