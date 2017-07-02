@@ -2,11 +2,14 @@ import os
 import sqlite3
 
 
-PATH = os.path.dirname(os.path.abspath(__file__))
-CREATE_DB_SCRIPT = os.path.join(
-    os.path.dirname(PATH),
-    'db_sql/create_db.sql'
-)
+CREATE_DB_SCRIPT = '''CREATE TABLE user_typing_data (
+                          time timestamp NOT NULL default CURRENT_TIMESTAMP,
+                          user_id integer NOT NULL,
+                          input0 text NOT NULL,
+                          IP text,
+                          browser text,
+                          PRIMARY KEY  (time, user_id)
+                        );'''
 
 
 class DatabaseManager:
@@ -18,10 +21,12 @@ class DatabaseManager:
         path -- the path where database file is saved
         '''
         self.path = path
-        self.conn = sqlite3.connect(path)
 
         if not os.path.exists(path):
-            self.run_sql_from_file(CREATE_DB_SCRIPT)
+            self.conn = sqlite3.connect(path)
+            self.execute(CREATE_DB_SCRIPT)
+        else:
+            self.conn = sqlite3.connect(path)
 
     def run_sql_from_file(self, path):
         '''Executes specified by path script'''

@@ -1,8 +1,8 @@
 import os
 import random
 import sqlite3
-from db_lib.database_manager import DatabaseManager
-from db_lib.entities.user_data import UserData
+from lib.database.database_manager import DatabaseManager
+from lib.database.entities.user_data import UserData
 from algorithms.classifiers.knn import kNNClassifier
 from algorithms.distances.manhattan_distance import ManhattanDistance
 
